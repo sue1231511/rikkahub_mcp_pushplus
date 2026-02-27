@@ -113,7 +113,10 @@ def mcp_endpoint():
 
     # --- notifications/initialized ---
     if method == 'notifications/initialized':
-        return '', 204
+        resp = Response('', status=204)
+        resp.headers['Content-Type'] = 'application/json'
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
 
     # --- tools/list ---
     if method == 'tools/list':
